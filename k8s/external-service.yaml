@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: external-service
   annotations:
-    service.beta.kubernetes.io/linode-loadbalancer-proxy-protocol: v1
+    service.beta.kubernetes.io/linode-loadbalancer-proxy-protocol: v2
 spec:
   selector:
     app: external-app
