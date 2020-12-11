@@ -1,0 +1,4 @@
+dist/*
+deploy/.terraform
+deploy/*.tfstate*
+deploy/kubeconfig.yaml

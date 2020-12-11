@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: external-app
+  template:
+    metadata:
+      labels:
+        app: external-app
+    spec:
+      containers:
+        - name: external
+          image: docker.io/charliekenney23/lke-in-cluster-hostname-test-external:latest
+          env:
+            - name: TARGET_ENDPOINT
+              value: http://nb-45-79-246-209.newark.nodebalancer.linode.com
+          resources:
+            limits:
+              memory: 128Mi
+              cpu: "500m"
+          ports:
+            - containerPort: 8080

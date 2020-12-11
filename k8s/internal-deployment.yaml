@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: internal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: internal-app
+  template:
+    metadata:
+      labels:
+        app: internal-app
+    spec:
+      containers:
+        - name: internal
+          image: docker.io/charliekenney23/lke-in-cluster-hostname-test-internal:latest
+          resources:
+            limits:
+              memory: 128Mi
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
